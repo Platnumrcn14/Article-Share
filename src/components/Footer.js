@@ -1,19 +1,47 @@
-//displays the footer.
 import "./styling.css";
 
+export default function Footer({
+    articleTitle,
+    setArticleTitle,
+    articleDescription,
+    setArticleDescription,
+    handleAddArticle
+}) {
+    const onSubmit = (e) => {
+        e.preventDefault();
+        handleAddArticle();
+    };
 
-export default function Footer(){
+    return (
+        <footer className="footer">
+            <form className="footer-form" onSubmit={onSubmit}>
 
-    return(
+                <div className="footer-input-group">
+                    <label className="footer-label">Article URL</label>
+                    <input
+                        type="text"
+                        placeholder="Enter article URL"
+                        value={articleTitle}
+                        onChange={(e) => setArticleTitle(e.target.value)}
+                        className="footer-input"
+                    />
+                </div>
 
-            <div>
-          
-               <footer className="footer">
+                <div className="footer-input-group">
+                    <label className="footer-label">Article Description</label>
+                    <input
+                        type="text"
+                        placeholder="Enter short description"
+                        value={articleDescription}
+                        onChange={(e) => setArticleDescription(e.target.value)}
+                        className="footer-input"
+                    />
+                </div>
 
-               </footer>
-               
-             </div>
-
-
+                <div className="footer-btn-group">
+                    <button className="footer-add-btn" type="submit">Add Article</button>
+                </div>
+            </form>
+        </footer>
     );
 }
